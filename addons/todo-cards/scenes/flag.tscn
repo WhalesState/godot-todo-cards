@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/todo-cards/scenes/flag.gd" type="Script" id=1]
+
+[sub_resource type="DynamicFont" id=12]
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.937255, 0.196078, 0.196078, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Flag" type="Button"]
+margin_right = 122.0
+margin_bottom = 11.0
+rect_min_size = Vector2( 59, 8 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 12 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/normal = SubResource( 13 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

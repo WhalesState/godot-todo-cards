@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="DynamicFont" id=12]
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.937255, 0.196078, 0.196078, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="FlagSelector" type="Button"]
+margin_right = 59.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 59, 16 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 12 )
+custom_styles/hover = SubResource( 15 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/normal = SubResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="TDC.svg"
+   width="16"
+   height="16"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     showgrid="true"
+     scale-x="32"
+     inkscape:zoom="24.096"
+     inkscape:cx="7.6153719"
+     inkscape:cy="13.342464"
+     inkscape:window-width="1680"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6">
+    <inkscape:grid
+       type="xygrid"
+       id="grid1288" />
+  </sodipodi:namedview>
+  <path
+     id="rect1392"
+     style="fill:#ffffff;fill-rule:evenodd;stroke-width:0"
+     d="M 3 1 L 3 15 L 13 15 L 13 1 L 3 1 z M 4 2 L 12 2 L 12 14 L 4 14 L 4 2 z "
+     transform="scale(32)" />
+  <rect
+     style="fill:#ffffff;fill-rule:evenodd;stroke-width:0"
+     id="rect1641"
+     width="128"
+     height="32"
+     x="160"
+     y="96" />
+  <rect
+     style="fill:#ffffff;fill-rule:evenodd;stroke-width:0"
+     id="rect1804"
+     width="32"
+     height="32"
+     x="320"
+     y="96" />
+  <rect
+     style="fill:#ffffff;fill-rule:evenodd;stroke-width:0"
+     id="rect1806"
+     width="192"
+     height="128"
+     x="160"
+     y="160" />
+  <rect
+     style="fill:#ffffff;fill-rule:evenodd;stroke-width:0"
+     id="rect1910"
+     width="128"
+     height="32"
+     x="224"
+     y="320" />
+  <rect
+     style="fill:#ffffff;fill-rule:evenodd;stroke-width:0"
+     id="rect2177"
+     width="192"
+     height="32"
+     x="160"
+     y="384" />
+  <rect
+     style="fill:#ffffff;fill-rule:evenodd;stroke-width:0"
+     id="rect2179"
+     width="32"
+     height="32"
+     x="160"
+     y="320" />
+</svg>

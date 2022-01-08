@@ -1,0 +1,289 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://addons/todo-cards/scenes/delete-card-popup.gd" type="Script" id=1]
+[ext_resource path="res://addons/todo-cards/scenes/flag-popup.gd" type="Script" id=2]
+[ext_resource path="res://addons/todo-cards/scenes/import-popup-panel.gd" type="Script" id=3]
+[ext_resource path="res://addons/todo-cards/scenes/todo-cards.gd" type="Script" id=4]
+[ext_resource path="res://addons/todo-cards/scenes/cards-container.gd" type="Script" id=5]
+[ext_resource path="res://addons/todo-cards/scenes/card-init.gd" type="Script" id=6]
+[ext_resource path="res://addons/todo-cards/assets/todo-cards.theme" type="Theme" id=7]
+
+[sub_resource type="StyleBoxFlat" id=14]
+content_margin_bottom = 4.0
+bg_color = Color( 0, 0, 0, 0.6 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+
+[sub_resource type="StyleBoxFlat" id=15]
+content_margin_bottom = 4.0
+bg_color = Color( 0, 0, 0, 0.6 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+
+[sub_resource type="StyleBoxFlat" id=16]
+content_margin_bottom = 4.0
+bg_color = Color( 0, 0, 0, 0.6 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+
+[node name="TodoCards" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 7 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBox" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="HBox"]
+margin_right = 1008.0
+margin_bottom = 584.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CardsContainer" type="ScrollContainer" parent="HBox/VBox"]
+margin_right = 1008.0
+margin_bottom = 584.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cards" type="HBoxContainer" parent="HBox/VBox/CardsContainer"]
+margin_right = 1054.0
+margin_bottom = 572.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 10
+
+[node name="AddCard" type="VBoxContainer" parent="HBox/VBox/CardsContainer/Cards"]
+margin_left = 798.0
+margin_right = 1054.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 256, 0 )
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardInit" type="PanelContainer" parent="HBox/VBox/CardsContainer/Cards/AddCard"]
+visible = false
+margin_right = 256.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+script = ExtResource( 6 )
+
+[node name="HBox" type="HBoxContainer" parent="HBox/VBox/CardsContainer/Cards/AddCard/CardInit"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 252.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="HBox/VBox/CardsContainer/Cards/AddCard/CardInit/HBox"]
+margin_right = 211.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+
+[node name="Hint" type="Label" parent="HBox/VBox/CardsContainer/Cards/AddCard/CardInit/HBox/LineEdit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Enter card name ..."
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XButton" type="Button" parent="HBox/VBox/CardsContainer/Cards/AddCard/CardInit/HBox"]
+margin_left = 215.0
+margin_right = 248.0
+margin_bottom = 36.0
+text = "X"
+
+[node name="AddButton" type="Button" parent="HBox/VBox/CardsContainer/Cards/AddCard"]
+margin_right = 256.0
+margin_bottom = 36.0
+text = "add Card"
+
+[node name="FlagPopupPanel" type="PopupPanel" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 386.0
+margin_bottom = 171.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="FlagPopupPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="FlagPopupPanel/VBox"]
+margin_right = 374.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 14 )
+text = "Select color"
+align = 1
+
+[node name="FlagsGrid" type="GridContainer" parent="FlagPopupPanel/VBox"]
+margin_top = 34.0
+margin_right = 374.0
+margin_bottom = 119.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 7
+columns = 4
+
+[node name="DeleteButton" type="Button" parent="FlagPopupPanel/VBox"]
+margin_top = 123.0
+margin_right = 374.0
+margin_bottom = 159.0
+text = "Delete Flag"
+
+[node name="DeletePopupPanel" type="PopupPanel" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 386.0
+margin_bottom = 142.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="DeletePopupPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="DeletePopupPanel/VBox"]
+margin_right = 374.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 15 )
+text = "Confirm"
+align = 1
+
+[node name="Info" type="Label" parent="DeletePopupPanel/VBox"]
+margin_top = 34.0
+margin_right = 374.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 0, 56 )
+size_flags_horizontal = 3
+text = "Are you Sure you want to delete {x} card ?"
+align = 1
+autowrap = true
+
+[node name="HBox" type="HBoxContainer" parent="DeletePopupPanel/VBox"]
+margin_left = 53.0
+margin_top = 94.0
+margin_right = 321.0
+margin_bottom = 130.0
+size_flags_horizontal = 6
+custom_constants/separation = 20
+
+[node name="Yes" type="Button" parent="DeletePopupPanel/VBox/HBox"]
+margin_right = 124.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 124, 0 )
+text = "Yes"
+
+[node name="No" type="Button" parent="DeletePopupPanel/VBox/HBox"]
+margin_left = 144.0
+margin_right = 268.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 124, 0 )
+text = "No"
+
+[node name="ImportPopupPanel" type="PopupPanel" parent="."]
+margin_right = 315.0
+margin_bottom = 328.0
+theme = ExtResource( 7 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="ImportPopupPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ImportPopupPanel/VBox"]
+margin_right = 307.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 16 )
+text = "Select card"
+align = 1
+
+[node name="Scroll" type="ScrollContainer" parent="ImportPopupPanel/VBox"]
+margin_top = 34.0
+margin_right = 307.0
+margin_bottom = 320.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="ImportPopupPanel/VBox/Scroll"]
+margin_right = 307.0
+margin_bottom = 286.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
