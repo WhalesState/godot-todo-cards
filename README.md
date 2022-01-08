@@ -1,5 +1,9 @@
 <div align = "center" style="font-family:Cairo; font-size:4em;">
 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@714&display=swap');
+</style>
+
 ![](https://user-images.githubusercontent.com/53877170/148646778-d4e9ea12-cc39-4224-aa23-918ab6e30ba8.png) 
   
 GODOT Todo Cards
