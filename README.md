@@ -18,7 +18,7 @@ GODOT Todo Cards
 
 > > 2- You can export and import cards easily, the generated cards are in `'addons/todo-cards/exported-cards'`. it exports `Card Name.tdc` -> `TodoCard` and it's a plain text file. after that you will find all the exported cards that are located in the export folder when you press `Options -> Import`.
 
-> > 3- You can add up to 12 flag colors to each card, it generated a color randomly and you can replace the color when you press on the flag button.
+> > 3- You can add up to 12 flag colors to each card, it generates a color randomly and you can replace the color when you press on the flag button.
 
 </div>
 
