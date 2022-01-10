@@ -5,7 +5,7 @@ var card_scene = preload('res://addons/todo-cards/scenes/todo-card.tscn') as Pac
 
 onready var add_card_button = get_node('Cards/AddCard/AddButton') as Button
 onready var card_init = get_node('Cards/AddCard/CardInit') as PanelContainer
-onready var todo_cards = get_node('../../../') as Control
+onready var todo_cards = get_node('../../../') as PanelContainer
 
 func _ready() -> void:
 	add_card_button.connect('pressed', self, '_on_add_card_button_pressed')

@@ -5,7 +5,7 @@ enum {
 	ADD_FLAG,
 	IMPORT_CARD,
 	EXPORT_CARD,
-	DELETE_CARD
+	DELETE_CARD,
 }
 
 var data := {}
@@ -16,18 +16,22 @@ onready var flags_grid = get_node('VBox/FlagsGrid') as GridContainer
 onready var add_task_button = get_node('VBox/TasksContainer/AddButton') as Button
 onready var tasks_container = get_node('VBox/TasksContainer') as VBoxContainer
 onready var text_edit = get_node('VBox/Comment/Panel/TextEdit') as TextEdit
-onready var todo_cards = get_node('../../../../../') as Control
+onready var todo_cards = get_node('../../../../../') as PanelContainer
 
 func _ready() -> void:
 	menu_button.get_popup().connect('id_pressed', self, '_on_menu_popup_id_pressed')
 	add_task_button.connect('pressed', self, '_on_add_task_button_pressed')
 	line_edit.connect('text_entered', self, '_on_line_edit_text_entered')
 	line_edit.connect('focus_exited', self, '_on_line_edit_text_entered', [line_edit.text])
+	menu_button.icon = todo_cards.menu_icon
+	menu_button.get_stylebox('focus').border_color = todo_cards.accent_color
 	if data:
 		load_data()
 	else:
 		line_edit.text = 'New Card'
 		flags_grid.add_flag(todo_cards.random_color())
+	var _color = Color.white if todo_cards.base_color.v < 0.5 else Color.black
+	get_stylebox('panel').set_deferred('border_color', _color)
 #<END>
 
 func load_data() -> void:
@@ -37,14 +41,14 @@ func load_data() -> void:
 	tasks_container.free_tasks()
 	if data.has('flags'):
 			for _col in data['flags']:
-				flags_grid.add_flag(Color(_col))
+				flags_grid.call_deferred('add_flag', Color(_col))
 	if data.has('label'):
 		line_edit.text = data['label']
 	if data.has('comment'):
 		text_edit.text = data['comment']
 	if data.has('tasks'):
 		for _task in data['tasks']:
-			tasks_container.add_task(_task[0], _task[1])
+			tasks_container.call_deferred('add_task' , _task[0], _task[1])
 #<END>
 
 func _on_line_edit_text_entered(_text: String):

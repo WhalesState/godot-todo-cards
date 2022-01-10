@@ -1,18 +1,20 @@
 tool
-extends PopupPanel
+extends WindowDialog
 
 var current_flag : Button
-var stylebox = preload('res://addons/todo-cards/assets/flag-selector.stylebox') as StyleBoxFlat
+var stylebox = preload('res://addons/todo-cards/assets/flag.stylebox') as StyleBoxFlat
 
 onready var flags_grid = get_node('VBox/FlagsGrid') as GridContainer
 onready var delete_button = get_node('VBox/DeleteButton') as Button
 onready var flag_selector = preload('res://addons/todo-cards/scenes/flag-selector.tscn') as PackedScene
+onready var todo_cards = get_parent()
 
 func _ready() -> void:
 	yield(get_tree(), 'idle_frame')
 	for c in get_parent().flag_colors:
 		add_flag_selector(c)
 	delete_button.connect('pressed', self, '_on_delete_flag_pressed')
+	connect('about_to_show', self, '_on_about_to_show')
 #<END>
 
 func add_flag_selector(_col: Color)-> void:
@@ -35,4 +37,8 @@ func _on_delete_flag_pressed()-> void:
 	current_flag.get_parent().remove_flag(current_flag)
 	current_flag = null
 	hide()
+#<END>
+
+func _on_about_to_show()-> void:
+	flags_grid.get_child(0).call_deferred('grab_focus')
 #<END>

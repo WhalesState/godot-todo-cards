@@ -4,20 +4,19 @@ extends TextEdit
 const _lcreg := [
 	['!', Color('FF2D00')],
 	['$', Color('3498DB')],
-	['#', Color('474747')],
+	['#', Color('808080')],
 	['@', Color('FF8C00')],
-	['*', Color('98C379')]
+	['*', Color('98C379')],
 ]
 
 const _rcreg := [
-	['"', '"', Color('EBD76F')],
+	['"', '"', Color('ffa07a')],
 	['(', ')', Color('6772EF')],
 	['[', ']', Color('CD67EF')],
-	['<', '>', Color('EF67A9')]
+	['<', '>', Color('EF67A9')],
 ]
 
 func _ready() -> void:
-	minimap_draw = true
 	connect('focus_exited', self, '_on_focus_exit')
 	for arr in _lcreg:
 		add_color_region(arr[0], arr[0], arr[1], true)

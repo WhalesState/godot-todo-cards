@@ -17,8 +17,8 @@ func update_color(_col: Color)-> void:
 func set_styles()-> void:
 	update_color(color)
 	var _styles := ['normal', 'hover', 'pressed']
-	for st in _styles:
-		add_stylebox_override(st, stylebox)
+	for style in _styles:
+		add_stylebox_override(style, stylebox)
 #<END>
 
 func _on_flag_pressed()-> void:
@@ -27,5 +27,3 @@ func _on_flag_pressed()-> void:
 	var _rect := Rect2(get_viewport().get_mouse_position(), _popup.rect_size)
 	_popup.popup(_rect)
 #<END>
-
-

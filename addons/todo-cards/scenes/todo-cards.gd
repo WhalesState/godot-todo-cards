@@ -1,8 +1,7 @@
 tool
-extends Control
+extends PanelContainer
 
 const PROJECT_PATH := 'res://addons/todo-cards/data.tdp'
-
 const flag_colors := [
 	Color.lightskyblue, Color.cyan, Color.dodgerblue, Color.crimson,
 	Color.violet, Color.deeppink, Color.greenyellow, Color.lightcoral,
@@ -12,11 +11,16 @@ const flag_colors := [
 
 var _ctrl_pressed := false
 var project_check : int
+var accent_color := Color.white
+var base_color := Color.white
+var menu_icon : Texture
+var close_icon : Texture
+
 var data := [
 	{
 		'flags': [Color.crimson, Color.snow, Color.crimson],
 		'label': 'Hello Card',
-		'comment': '* Important\n# comment\n! warning\n$ Question ?\n@ TODO\n\"do\" [u] <want> (more)\nHope You like it ! <3',
+		'comment': '* Important\n# comment\n! warning\n$ Question ?\n@ TODO\n\"do\"[u]<want>(more)?\nHope You like it! <3',
 		'tasks': [
 			['1- finish this plugin', true],
 			['2- release the plugin', true],
@@ -26,17 +30,21 @@ var data := [
 ]
 
 onready var cards_container = get_node('HBox/VBox/CardsContainer') as ScrollContainer
-onready var flag_popup = get_node('FlagPopupPanel') as PopupPanel
-onready var delete_popup = get_node('DeletePopupPanel') as PopupPanel
-onready var import_popup = get_node('ImportPopupPanel') as PopupPanel
+onready var flag_popup = get_node('FlagPopup') as WindowDialog
+onready var delete_popup = get_node('DeletePopup') as WindowDialog
+onready var import_popup = get_node('ImportPopup') as WindowDialog
 onready var rnd = RandomNumberGenerator.new() as RandomNumberGenerator
 onready var timer = get_node('Timer') as Timer
 
 func _ready() -> void:
 	load_data()
 	process_data()
+	var _flag_focus_stylebox = preload('res://addons/todo-cards/assets/flag-focus.stylebox') as StyleBoxFlat
+	_flag_focus_stylebox.border_color = accent_color
 	cards_container.connect('gui_input', self, '_on_gui_input')
 	timer.connect('timeout', self, '_on_timer_timeout')
+	var _color = Color.white if base_color.v < 0.5 else Color.black
+	get_stylebox('panel').border_color = _color
 #<END>
 
 func _unhandled_input(event: InputEvent)-> void:

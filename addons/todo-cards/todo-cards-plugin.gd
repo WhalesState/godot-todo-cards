@@ -3,10 +3,16 @@ extends EditorPlugin
 
 var todo_scene = preload('res://addons/todo-cards/scenes/todo-cards.tscn') as PackedScene
 var icon = preload('res://addons/todo-cards/assets/TDC.svg') as Texture
-var todo_instance : Control
+var todo_instance : PanelContainer
 
 func _enter_tree()-> void:
+  var _settings = get_editor_interface().get_editor_settings()
   todo_instance = todo_scene.instance()
+  todo_instance.accent_color = _settings.get_setting('interface/theme/accent_color')
+  todo_instance.base_color = _settings.get_setting('interface/theme/base_color')
+  var _theme = get_editor_interface().get_base_control()
+  todo_instance.menu_icon = _theme.get_icon("GuiTabMenu", "EditorIcons")
+  todo_instance.close_icon = _theme.get_icon("GuiClose", "EditorIcons")
   get_editor_interface().get_editor_viewport().add_child(todo_instance, true)
   make_visible(false)
   get_editor_interface().set_main_screen_editor('TDC')

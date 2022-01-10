@@ -1,17 +1,17 @@
 tool
-extends PopupPanel
+extends WindowDialog
 
 var cur_card = null
 
-onready var button_container = get_node('VBox/Scroll/VBox') as VBoxContainer
+onready var buttons_container = get_node('VBox/Scroll/VBox') as VBoxContainer
 
 func _ready() -> void:
 	connect('about_to_show', self, '_on_popup_show')
 #<END>
 
 func _on_popup_show() -> void:
-	for _child in button_container.get_children():
-		button_container.remove_child(_child)
+	for _child in buttons_container.get_children():
+		buttons_container.remove_child(_child)
 		_child.queue_free()
 	var _dir := Directory.new()
 	var _path := 'res://addons/todo-cards/exported-cards/'
@@ -23,8 +23,10 @@ func _on_popup_show() -> void:
 				var _button = Button.new()
 				_button.text = _file_name.get_basename()
 				_button.connect('pressed', self, '_on_button_pressed', [_path + _file_name])
-				button_container.add_child(_button)
+				buttons_container.add_child(_button)
 			_file_name = _dir.get_next()
+	if buttons_container.get_children():
+		buttons_container.get_child(0).call_deferred('grab_focus')
 #<END>
 
 func _on_button_pressed(_path: String) -> void:
